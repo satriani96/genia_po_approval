@@ -1,0 +1,39 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+tmp/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+server
+genia_po_approval
+
+# Go specific
+*.test
+*.out
+*.prof
+vendor/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Air (live reload)
+.air.toml
+tmp/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
