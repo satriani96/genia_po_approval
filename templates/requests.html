@@ -1,0 +1,15 @@
+{{ template "base" . }}
+
+{{ define "page" }}
+<h1 class="page-title">My Requests</h1>
+<p class="page-subtitle">Track your purchase requests and PO numbers.</p>
+
+<div class="section-header">
+  <span class="section-title">Recent</span>
+  <button id="refresh-requests" class="btn btn-secondary">Refresh</button>
+</div>
+
+<div id="requests-list">
+  <div class="empty">Select your name above to view requests.</div>
+</div>
+{{ end }}

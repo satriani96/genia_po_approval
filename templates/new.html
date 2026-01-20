@@ -1,0 +1,64 @@
+{{ template "base" . }}
+
+{{ define "page" }}
+<h1 class="page-title">New Request</h1>
+<p class="page-subtitle">What do you need? We'll handle the rest.</p>
+
+<form id="requisition-form" hx-post="/api/requisitions" hx-target="#form-status" hx-swap="innerHTML">
+  <input id="requestor-id" type="hidden" name="requestorId" value="" />
+  <input type="hidden" name="subsidiary" value="1" />
+
+  <div class="section-header">
+    <span class="section-title">Items</span>
+    <button type="button" id="add-item" class="btn btn-secondary">+ Add</button>
+  </div>
+
+  <div id="items-container"></div>
+
+  <div id="form-status"></div>
+
+  <button type="submit" class="btn btn-primary">Submit Request</button>
+</form>
+
+<template id="item-row-template">
+  <div class="item-card item-row">
+    <div class="item-header">
+      <span class="item-title">Item</span>
+      <button type="button" class="btn btn-ghost remove-item">Remove</button>
+    </div>
+
+    <div class="field">
+      <label class="label">Item name</label>
+      <div class="search-wrapper">
+        <input type="text" class="input item-search" placeholder="Search items..." autocomplete="off" />
+        <input type="hidden" class="item-id" value="" />
+        <div class="search-results item-results"></div>
+      </div>
+    </div>
+
+    <div class="row row-2">
+      <div class="field">
+        <label class="label">Vendor</label>
+        <select class="select vendor-select">
+          <option value="">Select vendor</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="label">Est. price</label>
+        <input type="number" min="0" step="0.01" class="input estimated-price" placeholder="0.00" />
+      </div>
+    </div>
+
+    <div class="row row-2">
+      <div class="field">
+        <label class="label">Qty</label>
+        <input type="number" min="1" step="1" value="1" class="input quantity" />
+      </div>
+      <div class="field">
+        <label class="label">Line note</label>
+        <input type="text" class="input line-notes" placeholder="Optional" />
+      </div>
+    </div>
+  </div>
+</template>
+{{ end }}

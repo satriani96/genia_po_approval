@@ -1,0 +1,24 @@
+{{ define "requests_list" }}
+{{ if not .Requests }}
+<div class="empty">No requests in the last 2 months.</div>
+{{ else }}
+<div class="requests-table">
+  <div class="requests-header">
+    <span class="col-date">Date</span>
+    <span class="col-req">Req #</span>
+    <span class="col-item">Item</span>
+    <span class="col-vendor">Supplier</span>
+    <span class="col-po">PO #</span>
+  </div>
+  {{ range .Requests }}
+  <div class="request-row">
+    <span class="col-date">{{ .TranDate }}</span>
+    <span class="col-req">{{ .TranID }}</span>
+    <span class="col-item">{{ .ItemName }}</span>
+    <span class="col-vendor">{{ if .VendorName }}{{ .VendorName }}{{ else }}—{{ end }}</span>
+    <span class="col-po">{{ if .PONumber }}{{ .PONumber }}{{ else }}N/A{{ end }}</span>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}
